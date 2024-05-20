@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FinalEx.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalEx.Context
 {
@@ -7,5 +8,7 @@ namespace FinalEx.Context
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<Department> Departments { get; set; }
     }
 }
