@@ -10,6 +10,8 @@ namespace FinalEx.Models
         [MaxLength(255), MinLength(10), Required]
         public string? Description { get; set; }
         [Required]
-        public DateOnly? CreatedDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? CreatedDate { get; set; }
     }
 }
