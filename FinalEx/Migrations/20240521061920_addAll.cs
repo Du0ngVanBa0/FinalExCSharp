@@ -6,18 +6,39 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinalEx.Migrations
 {
     /// <inheritdoc />
-    public partial class addEmpl : Migration
+    public partial class addAll : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "CreatedDate",
-                table: "Departments",
-                type: "datetime2",
-                nullable: false,
-                oldClrType: typeof(DateOnly),
-                oldType: "date");
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Departments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departments", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Employee",
@@ -31,7 +52,7 @@ namespace FinalEx.Migrations
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DepartmentId = table.Column<int>(type: "int", nullable: true),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false),
                     Salary = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
@@ -41,7 +62,8 @@ namespace FinalEx.Migrations
                         name: "FK_Employee_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -54,15 +76,13 @@ namespace FinalEx.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
                 name: "Employee");
 
-            migrationBuilder.AlterColumn<DateOnly>(
-                name: "CreatedDate",
-                table: "Departments",
-                type: "date",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "datetime2");
+            migrationBuilder.DropTable(
+                name: "Departments");
         }
     }
 }

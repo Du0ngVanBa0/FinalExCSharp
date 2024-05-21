@@ -10,6 +10,7 @@ namespace FinalEx.Context
         }
 
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<FinalEx.Models.Employee> Employee { get; set; } = default!;
     }
 }
