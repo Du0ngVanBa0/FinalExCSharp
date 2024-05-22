@@ -14,5 +14,6 @@ namespace FinalEx.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<User> users { get; set; }
         public DbSet<FinalEx.Models.Employee> Employee { get; set; } = default!;
+        public DbSet<FinalEx.Models.Post> Post { get; set; } = default!;
     }
 }

@@ -15,12 +15,12 @@ namespace FinalEx.Models
 
         public DateTime PostedDate { get; set; }
 
-        public int UserId { get; set; }
+        public string? UserId { get; set; }
 
         public int CategoryId { get; set; }
 
         [ForeignKey("UserId")]
-        public User? user { get; set; }
+        public User? User { get; set; }
 
         [ForeignKey("CategoryId")]
         public Category? Category { get; set; }
