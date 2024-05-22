@@ -63,3 +63,18 @@
 .default-style .ui-bordered {
     border: 1px solid rgba(24,28,33,0.06);
 }
+
+.schedule-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.schedule-item {
+    margin-bottom: 20px; 
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+}

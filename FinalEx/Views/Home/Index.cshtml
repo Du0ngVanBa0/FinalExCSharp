@@ -2,29 +2,86 @@
     ViewData["Title"] = "Home Page";
     ViewData["css"] = "Home/Index.css";
 }
-
-<div class="container posts-content">
-    <div class="row justify-content-center">
-        @foreach (var item in Model)
-        {
-            <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="d-flex mb-3">
-                            <img src="@item.Image" class="rounded-circle" alt="" style="width: 40px; height: 40px;">
-                            <div class="ms-3">
-                                <h5 class="mb-0">@item.User.Name</h5>
-                                <div class="text-muted small">@item.PostedDate</div>
-                            </div>
+<div class="container-fluid posts-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Search</h5>
+                    <form asp-action="Index" method="get">
+                        <div class="form-group">
+                            <label for="searchText">Search by title or content:</label>
+                            <input type="text" name="searchText" class="form-control" id="searchText">
                         </div>
-
-                        <p>
-                            @item.Content
-                        </p>
-                        <img class="d-block bg-cover" src="@item.Image" width="100%"></img>
-                    </div>
+                        <div class="form-group">
+                            <label for="categoryId">Select category:</label>
+                            <select name="categoryId" class="form-control" id="categoryId">
+                                <option value="">Select category</option>
+                                @foreach (var category in ViewBag.Categories)
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="authorName">Search by author name:</label>
+                            <input type="text" name="authorName" class="form-control" id="authorName">
+                        </div>
+                        <div class="form-group">
+                            <label for="postedDateFrom">From date:</label>
+                            <input type="date" name="postedDateFrom" class="form-control" id="postedDateFrom">
+                        </div>
+                        <div class="form-group">
+                            <label for="postedDateTo">To date:</label>
+                            <input type="date" name="postedDateTo" class="form-control" id="postedDateTo">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
                 </div>
             </div>
-        }
+        </div>
+
+        <div class="col-lg-6">
+            <div class="row justify-content-center">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="d-flex mb-3">
+                                    <img src="@item.Image" class="rounded-circle" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-3">
+                                        <h5 class="mb-0">@item.User.Name</h5>
+                                        <div class="text-muted small">@item.PostedDate</div>
+                                    </div>
+                                </div>
+                                <h5>@item.Title</h5>
+                                <p>
+                                    @item.Content
+                                </p>
+                                <img class="d-block bg-cover" src="@item.Image" width="100%"></img>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Schedule List</h5>
+                    @foreach (var schedule in ViewBag.Schedules)
+                    {
+                        <div class="schedule-item mb-3">
+                            <img src="@schedule.Image" class="img-fluid mb-2" alt="Schedule Image">
+                            <h6>@schedule.Title</h6>
+                            <p class="schedule-content">@schedule.Content</p>
+                            <span class="schedule-time-icon">🕒@schedule.StartDate.ToShortDateString() - @schedule.EndDate.ToShortDateString()</span>                            
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </div>

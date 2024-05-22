@@ -7,5 +7,7 @@ namespace FinalEx.Models
     {
         [Required]
         public String? Name { get; set; }
+
+        public String? Image {  get; set; }
     }
 }
