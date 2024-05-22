@@ -1,0 +1,45 @@
+﻿@model FinalEx.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+    ViewData["css"] = "Posts/Details.css";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Employee Details</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Full Name:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.FullName)</dd>
+
+                <dt class="col-sm-3">Phone Number:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+                <dt class="col-sm-3">Email:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+                <dt class="col-sm-3">Address:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Address)</dd>
+
+                <dt class="col-sm-3">Date of Birth:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.DateOfBirth)</dd>
+
+                <dt class="col-sm-3">Position:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Position)</dd>
+
+                <dt class="col-sm-3">Department:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Department.Description)</dd>
+
+                <dt class="col-sm-3">Salary:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Salary)</dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

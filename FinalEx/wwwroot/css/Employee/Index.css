@@ -1,0 +1,27 @@
+﻿/* Custom styles for the employee index page */
+.btn-sm {
+    margin-right: 5px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table thead-dark th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+thead th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+tbody td {
+    vertical-align: middle;
+    text-align: center;
+}
