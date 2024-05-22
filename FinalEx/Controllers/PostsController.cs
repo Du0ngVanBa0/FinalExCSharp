@@ -176,6 +176,7 @@ namespace FinalEx.Controllers
 
             var post = await _context.Post
                 .Include(p => p.Category)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (post == null)
             {

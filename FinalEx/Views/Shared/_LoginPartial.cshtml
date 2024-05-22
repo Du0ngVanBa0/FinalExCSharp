@@ -3,25 +3,29 @@
 
 <ul class="navbar-nav">
     @if (signInManager.IsSignedIn(User))
-    {
+    {            
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Add new Account</a>
+        </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @User.Identity?.Name
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                    <a class="dropdown-item" asp-action="Logout" asp-controller="Auth">
-                        Logout
-                    </a>
+                    <a class="dropdown-item" asp-action="ChangePassword" asp-controller="Account">Change Pass</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-action="UpdateProfile" asp-controller="Account">Update Profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-action="Logout" asp-controller="Auth">Logout</a>
                 </li>
             </ul>
         </li>
     }
     else
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
-        </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
         </li>
