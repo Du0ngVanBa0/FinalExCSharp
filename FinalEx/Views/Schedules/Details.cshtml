@@ -1,0 +1,28 @@
+﻿@model FinalEx.Models.Schedule
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h2>@Model.Title</h2>
+    <p>@Model.StartDate.ToString("dd/MM/yyyy")</p>
+    <p>@Model.EndDate.ToString("dd/MM/yyyy")</p>
+    <p>Category: @Model.Category.Name</p>
+    <p>Author: @Model.User.Name</p>
+    <div>
+        @Html.Raw(Model.Content.Replace("\n", "<br/>"))
+    </div>
+    @if (!string.IsNullOrEmpty(Model.Image))
+    {
+        <div>
+            <img src="@Model.Image" alt="Schedule Image" />
+        </div>
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
