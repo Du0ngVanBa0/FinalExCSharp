@@ -9,7 +9,7 @@ namespace FinalEx.Context
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
-
+        public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<User> users { get; set; }
