@@ -1,8 +1,30 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    ViewData["css"] = "Home/Index.css";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container posts-content">
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <img src="@item.Image" class="rounded-circle" alt="" style="width: 40px; height: 40px;">
+                            <div class="ms-3">
+                                <h5 class="mb-0">@item.User.Name</h5>
+                                <div class="text-muted small">@item.PostedDate</div>
+                            </div>
+                        </div>
+
+                        <p>
+                            @item.Content
+                        </p>
+                        <img class="d-block bg-cover" src="@item.Image" width="100%"></img>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
