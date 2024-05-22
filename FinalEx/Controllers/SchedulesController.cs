@@ -170,6 +170,7 @@ namespace FinalEx.Controllers
 
             var schedule = await _context.Schedules
                 .Include(p => p.Category)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (schedule == null)
             {
